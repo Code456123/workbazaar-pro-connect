@@ -442,8 +442,9 @@ function BecomeWorker() {
 /* ---------- FOUNDER ---------- */
 function Founder() {
   const founders = [
-    { name: "Shiva Bind", role: "Founder", initials: "SB", gradient: "from-brand to-indigo-500" },
+    { name: "Ayush Pal", role: "Founder", initials: "AP", gradient: "from-brand to-indigo-500" },
     { name: "Aryan Vishwakarma", role: "Co-Founder", initials: "AV", gradient: "from-ember to-rose-500" },
+    { name: "Shiva Bind", role: "Co-Founder", initials: "SB", gradient: "from-orange-500 to-pink-500" },
   ];
   return (
     <section id="founder" className="px-4 py-24">
@@ -455,7 +456,7 @@ function Founder() {
             Built by operators who believe technology can create dignified livelihoods for millions of skilled workers.
           </p>
         </motion.div>
-        <div className="mx-auto mt-14 grid max-w-4xl gap-6 sm:grid-cols-2">
+        <div className="mx-auto mt-14 grid gap-6 md:grid-cols-3 sm:grid-cols-2">
           {founders.map((f, i) => (
             <motion.div key={f.name} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.1 }}
               className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-card transition hover:-translate-y-1 hover:shadow-glow">
@@ -650,18 +651,60 @@ function Contact() {
               </a>
             </div>
           </motion.div>
-          <motion.form {...fadeUp} onSubmit={(e)=>e.preventDefault()} className="rounded-3xl border border-border bg-card p-8 shadow-card">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input placeholder="First name" className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand" />
-              <input placeholder="Last name" className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand" />
-            </div>
-            <input placeholder="Email" type="email" className="mt-4 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand" />
-            <input placeholder="Subject" className="mt-4 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand" />
-            <textarea placeholder="Message" rows={5} className="mt-4 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand" />
-            <button className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95" style={{ background: "var(--gradient-brand)" }}>
-              Send message <ArrowRight className="size-4" />
-            </button>
-          </motion.form>
+         <motion.form
+  {...fadeUp}
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  className="rounded-3xl border border-border bg-card p-8 shadow-card"
+>
+  <input
+    type="hidden"
+    name="access_key"
+    value="030ec272-05be-4eb6-ab47-4024d428d29f"
+  />
+
+  <div className="grid gap-4 sm:grid-cols-2">
+    <input
+      name="first_name"
+      placeholder="First name"
+      className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand"
+      required
+    />
+
+    <input
+      name="last_name"
+      placeholder="Last name"
+      className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand"
+      required
+    />
+  </div>
+
+  <input
+    name="email"
+    type="email"
+    placeholder="Email"
+    className="mt-4 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand"
+    required
+  />
+
+  <textarea
+    name="message"
+    rows={5}
+    placeholder="Message"
+    className="mt-4 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-brand"
+    required
+  />
+
+  <button
+    type="submit"
+    className="mt-5 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95"
+    style={{ background: 'var(--gradient-brand)' }}
+  >
+    Send message
+    <ArrowRight className="size-4" />
+  </button>
+</motion.form>
+            
         </div>
       </div>
     </section>
