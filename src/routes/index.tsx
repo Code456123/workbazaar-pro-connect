@@ -612,22 +612,42 @@ function Contact() {
             <p className="text-sm font-medium uppercase tracking-widest text-brand">Contact</p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Let's talk.</h2>
             <p className="mt-4 max-w-md text-lg text-muted-foreground">
-              Got a question, partnership idea, or feedback? Our team responds within a few hours.
+              Have a question, partnership idea, or feedback? Our team is here to help — reach out anytime.
             </p>
             <div className="mt-8 space-y-4">
-              {[
-                { icon: Mail, label: "Email", value: "hello@workbazaar.in" },
-                { icon: Phone, label: "Phone", value: "+91 80000 12345" },
-                { icon: MapPin, label: "HQ", value: "Bengaluru, India" },
-              ].map(c=>(
-                <div key={c.label} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card">
-                  <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand"><c.icon className="size-5" /></div>
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground">{c.label}</p>
-                    <p className="font-medium">{c.value}</p>
+              <a href="mailto:workbazaar.official@gmail.com"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card transition hover:border-brand/40">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-primary-foreground"><Mail className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Email</p>
+                  <p className="font-medium">workbazaar.official@gmail.com</p>
+                </div>
+              </a>
+              <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand"><Phone className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Phone</p>
+                  <div className="flex flex-col gap-0.5 font-medium">
+                    <a href="tel:+917307335545">+91 7307335545</a>
+                    <a href="tel:+918010730910">+91 8010730910</a>
                   </div>
                 </div>
-              ))}
+              </div>
+              <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand"><MapPin className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Location</p>
+                  <p className="font-medium">Mumbai, India</p>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/workbazaar.india" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card transition hover:border-brand/40">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-primary-foreground"><Instagram className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Instagram</p>
+                  <p className="font-medium">@workbazaar.india</p>
+                </div>
+              </a>
             </div>
           </motion.div>
           <motion.form {...fadeUp} onSubmit={(e)=>e.preventDefault()} className="rounded-3xl border border-border bg-card p-8 shadow-card">
@@ -647,6 +667,7 @@ function Contact() {
     </section>
   );
 }
+
 
 /* ---------- FOOTER ---------- */
 function Footer() {
