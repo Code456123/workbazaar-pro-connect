@@ -8,7 +8,7 @@ import {
   Mic, Navigation, Wallet, Globe, Twitter, Instagram, Linkedin, Facebook, Menu, X,
 } from "lucide-react";
 import heroWorker from "@/assets/hero-worker.png";
-import heroWorker from "@/assets/hero-worker.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
