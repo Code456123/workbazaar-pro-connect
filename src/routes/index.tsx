@@ -8,7 +8,7 @@ import {
   Mic, Navigation, Wallet, Globe, Twitter, Instagram, Linkedin, Facebook, Menu, X,
 } from "lucide-react";
 import heroWorker from "@/assets/hero-worker.png";
-import founder from "@/assets/founder.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -441,47 +441,51 @@ function BecomeWorker() {
 
 /* ---------- FOUNDER ---------- */
 function Founder() {
+  const founders = [
+    { name: "Shiva Bind", role: "Founder", initials: "SB", gradient: "from-brand to-indigo-500" },
+    { name: "Aryan Vishwakarma", role: "Co-Founder", initials: "AV", gradient: "from-ember to-rose-500" },
+  ];
   return (
     <section id="founder" className="px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-brand">Founder</p>
-          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Meet the mind behind WorkBazaar.</h2>
+          <p className="text-sm font-medium uppercase tracking-widest text-brand">Leadership</p>
+          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Meet the founders behind WorkBazaar.</h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Built by operators who believe technology can create dignified livelihoods for millions of skilled workers.
+          </p>
         </motion.div>
-        <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-[1fr_1.3fr] lg:items-center">
-          <motion.div {...fadeUp} className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] opacity-50 blur-2xl" style={{ background: "var(--gradient-brand)" }} />
-            <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
-              <img src={founder} alt="Prashant Rai, Founder of WorkBazaar" width={768} height={896} loading="lazy" className="aspect-[4/5] w-full object-cover" />
-            </div>
-          </motion.div>
-          <motion.div {...fadeUp}>
-            <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">Founder & CEO</div>
-            <h3 className="mt-4 font-display text-4xl font-bold">Prashant Rai</h3>
-            <p className="mt-4 text-lg text-muted-foreground">
-              "Every home deserves access to honest, skilled professionals. We built WorkBazaar to give millions of skilled workers a dignified platform — and to give every Indian household a service experience they can finally trust."
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                { t: "Mission", d: "Empower 10M skilled workers across India by 2030." },
-                { t: "Vision", d: "Make local services as reliable as ordering food." },
-              ].map(x=>(
-                <div key={x.t} className="rounded-2xl border border-border bg-card p-5 shadow-card">
-                  <h4 className="text-sm font-semibold text-brand">{x.t}</h4>
-                  <p className="mt-1 text-sm text-muted-foreground">{x.d}</p>
+        <div className="mx-auto mt-14 grid max-w-4xl gap-6 sm:grid-cols-2">
+          {founders.map((f, i) => (
+            <motion.div key={f.name} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.1 }}
+              className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-card transition hover:-translate-y-1 hover:shadow-glow">
+              <div className={`absolute -right-20 -top-20 size-48 rounded-full bg-gradient-to-br ${f.gradient} opacity-15 blur-3xl`} />
+              <div className="relative flex items-center gap-6">
+                <div className={`grid size-20 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.gradient} text-2xl font-bold text-white shadow-glow`}>
+                  {f.initials}
                 </div>
-              ))}
-            </div>
-            <div className="mt-6 flex gap-3">
-              <a href="#" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="LinkedIn"><Linkedin className="size-4" /></a>
-              <a href="#" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="Twitter"><Twitter className="size-4" /></a>
-            </div>
-          </motion.div>
+                <div>
+                  <p className="text-sm font-semibold text-brand">{f.role}</p>
+                  <h3 className="mt-1 font-display text-2xl font-bold sm:text-3xl">{f.name}</h3>
+                </div>
+              </div>
+              <p className="relative mt-6 text-base text-muted-foreground">
+                {f.role === "Founder"
+                  ? "Leading WorkBazaar's mission to build India's most trusted, AI-powered services marketplace — one city, one worker, one home at a time."
+                  : "Shaping product, growth, and operations to make home services instant, transparent, and reliable for every Indian household."}
+              </p>
+              <div className="relative mt-6 flex gap-3">
+                <a href="https://www.instagram.com/workbazaar.india" target="_blank" rel="noopener noreferrer" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="Instagram"><Instagram className="size-4" /></a>
+                <a href="#" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="LinkedIn"><Linkedin className="size-4" /></a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- FUTURE VISION ---------- */
 function FutureVision() {
@@ -608,22 +612,42 @@ function Contact() {
             <p className="text-sm font-medium uppercase tracking-widest text-brand">Contact</p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Let's talk.</h2>
             <p className="mt-4 max-w-md text-lg text-muted-foreground">
-              Got a question, partnership idea, or feedback? Our team responds within a few hours.
+              Have a question, partnership idea, or feedback? Our team is here to help — reach out anytime.
             </p>
             <div className="mt-8 space-y-4">
-              {[
-                { icon: Mail, label: "Email", value: "hello@workbazaar.in" },
-                { icon: Phone, label: "Phone", value: "+91 80000 12345" },
-                { icon: MapPin, label: "HQ", value: "Bengaluru, India" },
-              ].map(c=>(
-                <div key={c.label} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card">
-                  <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand"><c.icon className="size-5" /></div>
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground">{c.label}</p>
-                    <p className="font-medium">{c.value}</p>
+              <a href="mailto:workbazaar.official@gmail.com"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card transition hover:border-brand/40">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-primary-foreground"><Mail className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Email</p>
+                  <p className="font-medium">workbazaar.official@gmail.com</p>
+                </div>
+              </a>
+              <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand"><Phone className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Phone</p>
+                  <div className="flex flex-col gap-0.5 font-medium">
+                    <a href="tel:+917307335545">+91 7307335545</a>
+                    <a href="tel:+918010730910">+91 8010730910</a>
                   </div>
                 </div>
-              ))}
+              </div>
+              <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand"><MapPin className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Location</p>
+                  <p className="font-medium">Mumbai, India</p>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/workbazaar.india" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-card transition hover:border-brand/40">
+                <div className="grid size-11 place-items-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-primary-foreground"><Instagram className="size-5" /></div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Instagram</p>
+                  <p className="font-medium">@workbazaar.india</p>
+                </div>
+              </a>
             </div>
           </motion.div>
           <motion.form {...fadeUp} onSubmit={(e)=>e.preventDefault()} className="rounded-3xl border border-border bg-card p-8 shadow-card">
@@ -644,6 +668,7 @@ function Contact() {
   );
 }
 
+
 /* ---------- FOOTER ---------- */
 function Footer() {
   const cols = [
@@ -662,12 +687,20 @@ function Footer() {
             <p className="mt-4 max-w-xs text-sm text-white/60">AI-powered marketplace for verified local professionals. Book trusted pros — instantly.</p>
             <div className="mt-5 flex gap-2">
               {[Twitter,Instagram,Linkedin,Facebook].map((I, i) => (
-                <a key={i} href="#" aria-label="social" className="grid size-9 place-items-center rounded-full border border-white/15 transition hover:bg-white/10"><I className="size-4" /></a>
+                <a key={i} href={i === 1 ? "https://www.instagram.com/workbazaar.india" : "#"} target={i === 1 ? "_blank" : undefined} rel={i === 1 ? "noopener noreferrer" : undefined} aria-label="social" className="grid size-9 place-items-center rounded-full border border-white/15 transition hover:bg-white/10"><I className="size-4" /></a>
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
               <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15"><Smartphone className="size-4" /> App Store</a>
               <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15"><Smartphone className="size-4" /> Google Play</a>
+            </div>
+            <div className="mt-6 space-y-2 text-sm text-white/60">
+              <a href="mailto:workbazaar.official@gmail.com" className="flex items-center gap-2 hover:text-white"><Mail className="size-4" /> workbazaar.official@gmail.com</a>
+              <div className="flex flex-col gap-1">
+                <a href="tel:+917307335545" className="flex items-center gap-2 hover:text-white"><Phone className="size-4" /> +91 7307335545</a>
+                <a href="tel:+918010730910" className="flex items-center gap-2 hover:text-white"><Phone className="size-4" /> +91 8010730910</a>
+              </div>
+              <p className="flex items-center gap-2"><MapPin className="size-4" /> Mumbai, India</p>
             </div>
           </div>
           {cols.map(c=>(
@@ -681,9 +714,10 @@ function Footer() {
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-3 text-xs text-white/50 sm:flex-row">
           <p>© {new Date().getFullYear()} WorkBazaar Technologies Pvt. Ltd. All rights reserved.</p>
-          <p>Made with care in Bengaluru, India.</p>
+          <p>Made with care in Mumbai, India.</p>
         </div>
       </div>
     </footer>
   );
 }
+
