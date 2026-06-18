@@ -687,12 +687,20 @@ function Footer() {
             <p className="mt-4 max-w-xs text-sm text-white/60">AI-powered marketplace for verified local professionals. Book trusted pros — instantly.</p>
             <div className="mt-5 flex gap-2">
               {[Twitter,Instagram,Linkedin,Facebook].map((I, i) => (
-                <a key={i} href="#" aria-label="social" className="grid size-9 place-items-center rounded-full border border-white/15 transition hover:bg-white/10"><I className="size-4" /></a>
+                <a key={i} href={i === 1 ? "https://www.instagram.com/workbazaar.india" : "#"} target={i === 1 ? "_blank" : undefined} rel={i === 1 ? "noopener noreferrer" : undefined} aria-label="social" className="grid size-9 place-items-center rounded-full border border-white/15 transition hover:bg-white/10"><I className="size-4" /></a>
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
               <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15"><Smartphone className="size-4" /> App Store</a>
               <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15"><Smartphone className="size-4" /> Google Play</a>
+            </div>
+            <div className="mt-6 space-y-2 text-sm text-white/60">
+              <a href="mailto:workbazaar.official@gmail.com" className="flex items-center gap-2 hover:text-white"><Mail className="size-4" /> workbazaar.official@gmail.com</a>
+              <div className="flex flex-col gap-1">
+                <a href="tel:+917307335545" className="flex items-center gap-2 hover:text-white"><Phone className="size-4" /> +91 7307335545</a>
+                <a href="tel:+918010730910" className="flex items-center gap-2 hover:text-white"><Phone className="size-4" /> +91 8010730910</a>
+              </div>
+              <p className="flex items-center gap-2"><MapPin className="size-4" /> Mumbai, India</p>
             </div>
           </div>
           {cols.map(c=>(
@@ -706,9 +714,10 @@ function Footer() {
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-3 text-xs text-white/50 sm:flex-row">
           <p>© {new Date().getFullYear()} WorkBazaar Technologies Pvt. Ltd. All rights reserved.</p>
-          <p>Made with care in Bengaluru, India.</p>
+          <p>Made with care in Mumbai, India.</p>
         </div>
       </div>
     </footer>
   );
 }
+
