@@ -441,47 +441,51 @@ function BecomeWorker() {
 
 /* ---------- FOUNDER ---------- */
 function Founder() {
+  const founders = [
+    { name: "Shiva Bind", role: "Founder", initials: "SB", gradient: "from-brand to-indigo-500" },
+    { name: "Aryan Vishwakarma", role: "Co-Founder", initials: "AV", gradient: "from-ember to-rose-500" },
+  ];
   return (
     <section id="founder" className="px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-brand">Founder</p>
-          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Meet the mind behind WorkBazaar.</h2>
+          <p className="text-sm font-medium uppercase tracking-widest text-brand">Leadership</p>
+          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Meet the founders behind WorkBazaar.</h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Built by operators who believe technology can create dignified livelihoods for millions of skilled workers.
+          </p>
         </motion.div>
-        <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-[1fr_1.3fr] lg:items-center">
-          <motion.div {...fadeUp} className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] opacity-50 blur-2xl" style={{ background: "var(--gradient-brand)" }} />
-            <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
-              <img src={founder} alt="Prashant Rai, Founder of WorkBazaar" width={768} height={896} loading="lazy" className="aspect-[4/5] w-full object-cover" />
-            </div>
-          </motion.div>
-          <motion.div {...fadeUp}>
-            <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold">Founder & CEO</div>
-            <h3 className="mt-4 font-display text-4xl font-bold">Prashant Rai</h3>
-            <p className="mt-4 text-lg text-muted-foreground">
-              "Every home deserves access to honest, skilled professionals. We built WorkBazaar to give millions of skilled workers a dignified platform — and to give every Indian household a service experience they can finally trust."
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                { t: "Mission", d: "Empower 10M skilled workers across India by 2030." },
-                { t: "Vision", d: "Make local services as reliable as ordering food." },
-              ].map(x=>(
-                <div key={x.t} className="rounded-2xl border border-border bg-card p-5 shadow-card">
-                  <h4 className="text-sm font-semibold text-brand">{x.t}</h4>
-                  <p className="mt-1 text-sm text-muted-foreground">{x.d}</p>
+        <div className="mx-auto mt-14 grid max-w-4xl gap-6 sm:grid-cols-2">
+          {founders.map((f, i) => (
+            <motion.div key={f.name} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.1 }}
+              className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-card transition hover:-translate-y-1 hover:shadow-glow">
+              <div className={`absolute -right-20 -top-20 size-48 rounded-full bg-gradient-to-br ${f.gradient} opacity-15 blur-3xl`} />
+              <div className="relative flex items-center gap-6">
+                <div className={`grid size-20 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.gradient} text-2xl font-bold text-white shadow-glow`}>
+                  {f.initials}
                 </div>
-              ))}
-            </div>
-            <div className="mt-6 flex gap-3">
-              <a href="#" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="LinkedIn"><Linkedin className="size-4" /></a>
-              <a href="#" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="Twitter"><Twitter className="size-4" /></a>
-            </div>
-          </motion.div>
+                <div>
+                  <p className="text-sm font-semibold text-brand">{f.role}</p>
+                  <h3 className="mt-1 font-display text-2xl font-bold sm:text-3xl">{f.name}</h3>
+                </div>
+              </div>
+              <p className="relative mt-6 text-base text-muted-foreground">
+                {f.role === "Founder"
+                  ? "Leading WorkBazaar's mission to build India's most trusted, AI-powered services marketplace — one city, one worker, one home at a time."
+                  : "Shaping product, growth, and operations to make home services instant, transparent, and reliable for every Indian household."}
+              </p>
+              <div className="relative mt-6 flex gap-3">
+                <a href="https://www.instagram.com/workbazaar.india" target="_blank" rel="noopener noreferrer" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="Instagram"><Instagram className="size-4" /></a>
+                <a href="#" className="grid size-10 place-items-center rounded-full border border-border bg-card transition hover:bg-accent" aria-label="LinkedIn"><Linkedin className="size-4" /></a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- FUTURE VISION ---------- */
 function FutureVision() {
