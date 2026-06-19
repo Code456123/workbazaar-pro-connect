@@ -189,10 +189,10 @@ function Hero() {
 /* ---------- STATS ---------- */
 function Stats() {
   const stats = [
-    { value: "50K+", label: "Verified Workers", icon: ShieldCheck },
-    { value: "200K+", label: "Happy Customers", icon: Sparkles },
-    { value: "1M+", label: "Successful Bookings", icon: Check },
-    { value: "20+", label: "Cities Across India", icon: MapPin },
+    { value: "1K+", label: "Verified Workers", icon: ShieldCheck },
+    { value: "500+", label: "Happy Customers", icon: Sparkles },
+    { value: "350+", label: "Successful Bookings", icon: Check },
+    { value: "10+", label: "Cities Across India", icon: MapPin },
   ];
   return (
     <section className="px-4 py-16">
