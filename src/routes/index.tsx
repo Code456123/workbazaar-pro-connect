@@ -450,6 +450,91 @@ function WhyChoose() {
 }
 
 /* ---------- BECOME WORKER ---------- */
+function ProForm() {
+  const [formData, setFormData] = useState({ name: "", phone: "", trade: "", city: "" });
+  const [status, setStatus] = useState("idle");
+
+ const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("https://formspree.io/f/xvznjjjo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setFormData({ name: "", phone: "", trade: "", city: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="rounded-2xl glass p-6 shadow-glow text-center">
+        <h3 className="text-lg font-semibold text-white">Thanks! 🎉</h3>
+        <p className="mt-2 text-sm text-white/70">We've received your application. Our team will contact you soon.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form className="rounded-2xl glass p-6 shadow-glow" onSubmit={handleSubmit}>
+      <h3 className="text-lg font-semibold text-white">Apply to become a Pro</h3>
+      <p className="mt-1 text-sm text-white/60">Takes less than 2 minutes.</p>
+      <div className="mt-5 space-y-3">
+        <input
+          required
+          className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40"
+          placeholder="Full name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        />
+        <input
+          required
+          className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40"
+          placeholder="Phone number"
+          value={formData.phone}
+          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+        />
+        <select
+          required
+          className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-white/40"
+          value={formData.trade}
+          onChange={(e) => setFormData({ ...formData, trade: e.target.value })}
+        >
+          {["Select your trade","Electrician","Plumber","Carpenter","Painter","Waterproofing","AC Technician","Refrigerator Repair","Washing Machine Repair","Microwave Repair","TV Repair","Geyser Repair","Home Deep Cleaning","Kitchen Cleaning","Cleaner","Sofa & Carpet Cleaning","Water Tank Cleaning","House Helper","Cook","Driver","CCTV Installation","RO Service","Pest Control","Tailoring"].map((o) => (
+            <option key={o} value={o === "Select your trade" ? "" : o} className="bg-navy text-white">{o}</option>
+          ))}
+        </select>
+        <input
+          required
+          className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40"
+          placeholder="City"
+          value={formData.city}
+          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+        />
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="mt-2 w-full rounded-xl px-4 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95 disabled:opacity-60"
+          style={{ background: "var(--gradient-brand)" }}
+        >
+          {status === "loading" ? "Submitting..." : "Start Earning Today"}
+        </button>
+        {status === "error" && (
+          <p className="text-sm text-red-400">Something went wrong. Please try again.</p>
+        )}
+      </div>
+    </form>
+  );
+}
+
 function BecomeWorker() {
   return (
     <section id="become" className="px-4 py-24">
@@ -473,21 +558,7 @@ function BecomeWorker() {
                 ))}
               </ul>
             </div>
-            <form className="rounded-2xl glass p-6 shadow-glow" onSubmit={(e)=>e.preventDefault()}>
-              <h3 className="text-lg font-semibold text-white">Apply to become a Pro</h3>
-              <p className="mt-1 text-sm text-white/60">Takes less than 2 minutes.</p>
-              <div className="mt-5 space-y-3">
-                <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="Full name" />
-                <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="Phone number" />
-                <select className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-white/40">
-                  {["Select your trade","Electrician","Plumber","Carpenter","Painter","Waterproofing","AC Technician","Refrigerator Repair","Washing Machine Repair","Microwave Repair","TV Repair","Geyser Repair","Home Deep Cleaning","Kitchen Cleaning","Cleaner","Sofa & Carpet Cleaning","Water Tank Cleaning","House Helper","Cook","Driver","CCTV Installation","RO Service","Pest Control","Tailoring"].map(o=><option key={o} className="bg-navy text-white">{o}</option>)}
-                </select>
-                <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="City" />
-                <button className="mt-2 w-full rounded-xl px-4 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95" style={{ background: "var(--gradient-brand)" }}>
-                  Start Earning Today
-                </button>
-              </div>
-            </form>
+            <ProForm />
           </div>
         </div>
       </div>
