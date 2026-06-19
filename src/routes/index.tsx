@@ -1,6 +1,3 @@
-
-
-
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
@@ -9,7 +6,6 @@ import {
   ShieldCheck, Brain, Bell, BadgeDollarSign, Headphones, Search,
   Smartphone, UserPlus, MapPin, Phone, Mail, ArrowRight, Star, Check, Plus, Minus,
   Mic, Navigation, Wallet, Globe, Twitter, Instagram, Linkedin, Facebook, Menu, X,
-  Users, Grid2x2, ChevronDown,
 } from "lucide-react";
 import heroWorker from "@/assets/hero-worker.png";
 
@@ -193,10 +189,10 @@ function Hero() {
 /* ---------- STATS ---------- */
 function Stats() {
   const stats = [
-    { value: "1K+", label: "Verified Workers", icon: ShieldCheck },
-    { value: "300+", label: "Happy Customers", icon: Sparkles },
-    { value: "500+", label: "Successful Bookings", icon: Check },
-    { value: "10+", label: "Cities Across India", icon: MapPin },
+    { value: "50K+", label: "Verified Workers", icon: ShieldCheck },
+    { value: "200K+", label: "Happy Customers", icon: Sparkles },
+    { value: "1M+", label: "Successful Bookings", icon: Check },
+    { value: "20+", label: "Cities Across India", icon: MapPin },
   ];
   return (
     <section className="px-4 py-16">
@@ -220,48 +216,17 @@ function Stats() {
 }
 
 /* ---------- SERVICES ---------- */
-
 function Services() {
-  const categories = [
-    {
-      name: "Home Repair",
-      icon: Wrench,
-      tint: "from-yellow-400/20 to-amber-500/10",
-      color: "text-amber-500",
-      services: ["Electrician", "Plumber", "Carpenter", "Painter", "Waterproofing"],
-    },
-    {
-      name: "Appliance Repair",
-      icon: Cog,
-      tint: "from-violet-400/20 to-purple-500/10",
-      color: "text-violet-500",
-      services: ["AC", "Refrigerator", "Washing Machine", "Microwave", "TV", "Geyser"],
-    },
-    {
-      name: "Cleaning",
-      icon: Sparkles,
-      tint: "from-emerald-400/20 to-teal-500/10",
-      color: "text-emerald-500",
-      services: ["Home Deep Clean", "Kitchen", "Bathroom", "Sofa & Carpet", "Water Tank"],
-    },
-    {
-      name: "Daily Help",
-      icon: Users,
-      tint: "from-sky-400/20 to-blue-500/10",
-      color: "text-sky-500",
-      services: ["House Helper", "Cook", "Driver"],
-    },
-    {
-      name: "Other Services",
-      icon: Grid2x2,
-      tint: "from-pink-400/20 to-fuchsia-500/10",
-      color: "text-pink-500",
-      services: ["CCTV Installation", "RO Service", "Pest Control", "Tailoring"],
-    },
+  const services = [
+    { name: "Electrician", icon: Zap, tint: "from-yellow-400/20 to-amber-500/10", color: "text-amber-500" },
+    { name: "Plumber", icon: Droplets, tint: "from-sky-400/20 to-blue-500/10", color: "text-sky-500" },
+    { name: "Carpenter", icon: Hammer, tint: "from-orange-400/20 to-red-500/10", color: "text-orange-500" },
+    { name: "Painter", icon: Paintbrush, tint: "from-pink-400/20 to-fuchsia-500/10", color: "text-pink-500" },
+    { name: "AC Repair", icon: Snowflake, tint: "from-cyan-400/20 to-blue-500/10", color: "text-cyan-500" },
+    { name: "Cleaning", icon: Sparkles, tint: "from-emerald-400/20 to-teal-500/10", color: "text-emerald-500" },
+    { name: "Appliance Repair", icon: Cog, tint: "from-violet-400/20 to-purple-500/10", color: "text-violet-500" },
+    { name: "RO Repair", icon: Wrench, tint: "from-indigo-400/20 to-blue-500/10", color: "text-indigo-500" },
   ];
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
     <section id="services" className="relative px-4 py-24">
       <div className="mx-auto max-w-7xl">
@@ -269,55 +234,29 @@ function Services() {
           <motion.div {...fadeUp} className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-widest text-brand">Services</p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Every service your home needs.</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Hand-picked experts across 5 categories, available on demand or scheduled.</p>
+            <p className="mt-4 text-lg text-muted-foreground">Hand-picked experts across 8+ categories, available on demand or scheduled.</p>
           </motion.div>
           <motion.a {...fadeUp} href="#download" className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline">
             View all services <ArrowRight className="size-4" />
           </motion.a>
         </div>
-
-        <div className="mt-12 grid gap-4">
-          {categories.map((cat, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <motion.div
-                key={cat.name}
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: i * 0.05 }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:shadow-glow"
-              >
-                <div className={`absolute inset-0 -z-0 bg-gradient-to-br ${cat.tint} opacity-0 transition group-hover:opacity-100`} />
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="relative flex w-full items-center justify-between p-6 text-left"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`grid size-12 place-items-center rounded-xl bg-secondary ${cat.color}`}>
-                      <cat.icon className="size-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">{cat.name}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">{cat.services.length} services · Verified pros</p>
-                    </div>
-                  </div>
-                  <ChevronDown className={`size-5 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                </button>
-
-                {isOpen && (
-                  <div className="relative flex flex-wrap gap-2 px-6 pb-6">
-                    {cat.services.map((s) => (
-                      <span
-                        key={s}
-                        className="rounded-full bg-secondary px-3 py-1.5 text-sm font-medium text-foreground transition hover:bg-brand hover:text-white cursor-pointer"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            );
-          })}
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((s, i) => (
+            <motion.div key={s.name} {...fadeUp} transition={{ ...fadeUp.transition, delay: (i % 4) * 0.05 }}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:shadow-glow">
+              <div className={`absolute inset-0 -z-0 bg-gradient-to-br ${s.tint} opacity-0 transition group-hover:opacity-100`} />
+              <div className="relative">
+                <div className={`grid size-12 place-items-center rounded-xl bg-secondary ${s.color}`}>
+                  <s.icon className="size-6" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold">{s.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">Verified pros · Same-day</p>
+                <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand opacity-0 transition group-hover:opacity-100">
+                  Book now <ArrowRight className="size-3.5" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -471,9 +410,9 @@ function BecomeWorker() {
               <h2 className="mt-5 font-display text-4xl font-bold leading-tight sm:text-5xl">
                 Grow your business with <span className="text-gradient">WorkBazaar.</span>
               </h2>
-              <p className="mt-4 max-w-lg text-white/70">Join 5000+ verified pros earning up to ₹12000/month. Free onboarding, everyday payouts, and a steady stream of nearby jobs.</p>
+              <p className="mt-4 max-w-lg text-white/70">Join 50,000+ verified pros earning up to ₹80,000/month. Free onboarding, weekly payouts, and a steady stream of nearby jobs.</p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {["Everyday payouts","Free training","Flexible hours","Insurance cover"].map(x=>(
+                {["Weekly payouts","Free training","Flexible hours","Insurance cover"].map(x=>(
                   <li key={x} className="flex items-center gap-2 text-sm text-white/80"><Check className="size-4 text-ember" /> {x}</li>
                 ))}
               </ul>
@@ -485,7 +424,7 @@ function BecomeWorker() {
                 <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="Full name" />
                 <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="Phone number" />
                 <select className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-white/40">
-                  {["Select your trade","Electrician","Plumber","Carpenter","Painter","Waterproofing","AC Technician","Refrigerator Repair","Washing Machine Repair","Microwave Repair","TV Repair","Geyser Repair","Home Deep Cleaning","Kitchen Cleaning","Cleaner","Sofa & Carpet Cleaning","Water Tank Cleaning","House Helper","Cook","Driver","CCTV Installation","RO Service","Pest Control","Tailoring"].map(o=><option key={o} className="bg-navy text-white">{o}</option>)}
+                  {["Select your trade","Electrician","Plumber","Carpenter","Painter","AC Technician","Cleaner"].map(o=><option key={o} className="bg-navy text-white">{o}</option>)}
                 </select>
                 <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="City" />
                 <button className="mt-2 w-full rounded-xl px-4 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95" style={{ background: "var(--gradient-brand)" }}>
@@ -590,7 +529,7 @@ function Testimonials() {
     { n: "Mohammed Irfan", r: "Mumbai · Plumber", q: "I earn 3x more on WorkBazaar than I did with my old contractor.", a: "MI" },
     { n: "Sneha Patel", r: "Bangalore · Customer", q: "Transparent pricing and lovely staff. Easily the best app for home services.", a: "SP" },
     { n: "Rahul Verma", r: "Pune · Customer", q: "The tracking and instant updates feel like ordering food. Brilliant.", a: "RV" },
-    { n: "Kiran Das", r: "Hyderabad · AC Tech", q: "Everyday payouts and steady jobs — exactly what I needed.", a: "KD" },
+    { n: "Kiran Das", r: "Hyderabad · AC Tech", q: "Weekly payouts and steady jobs — exactly what I needed.", a: "KD" },
     { n: "Neha Kapoor", r: "Gurgaon · Customer", q: "I deleted every other handyman app. WorkBazaar just works.", a: "NK" },
   ];
   return (
@@ -790,9 +729,19 @@ function Footer() {
             <div className="flex items-center gap-2"><Logo /><span className="font-display text-lg font-bold">WorkBazaar</span></div>
             <p className="mt-4 max-w-xs text-sm text-white/60">AI-powered marketplace for verified local professionals. Book trusted pros — instantly.</p>
             <div className="mt-5 flex gap-2">
-              {[Twitter,Instagram,Linkedin,Facebook].map((I, i) => (
-                <a key={i} href={i === 1 ? "https://www.instagram.com/workbazaar.india" : "#"} target={i === 1 ? "_blank" : undefined} rel={i === 1 ? "noopener noreferrer" : undefined} aria-label="social" className="grid size-9 place-items-center rounded-full border border-white/15 transition hover:bg-white/10"><I className="size-4" /></a>
-              ))}
+              {[Twitter,Instagram,Linkedin,Facebook].map((I, i) => {
+                const socialLinks: Record<number, string | null> = {
+                  0: "https://x.com/workbazaarindia",
+                  1: "https://www.instagram.com/workbazaar.india",
+                  2: null,
+                  3: "https://www.facebook.com/profile.php?id=61591068779558",
+                };
+                const href = socialLinks[i] || "#";
+                const isExternal = socialLinks[i] !== null;
+                return (
+                  <a key={i} href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} aria-label="social" className="grid size-9 place-items-center rounded-full border border-white/15 transition hover:bg-white/10"><I className="size-4" /></a>
+                );
+              })}
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
               <a href="#" className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs font-medium hover:bg-white/15"><Smartphone className="size-4" /> App Store</a>
