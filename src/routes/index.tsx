@@ -190,8 +190,8 @@ function Hero() {
 function Stats() {
   const stats = [
     { value: "1K+", label: "Verified Workers", icon: ShieldCheck },
-    { value: "500+", label: "Happy Customers", icon: Sparkles },
-    { value: "1K+", label: "Successful Bookings", icon: Check },
+    { value: "300+", label: "Happy Customers", icon: Sparkles },
+    { value: "500+", label: "Successful Bookings", icon: Check },
     { value: "10+", label: "Cities Across India", icon: MapPin },
   ];
   return (
