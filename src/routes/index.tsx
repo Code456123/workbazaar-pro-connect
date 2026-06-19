@@ -733,7 +733,7 @@ function Footer() {
                 const socialLinks: Record<number, string | null> = {
                   0: "https://x.com/workbazaarindia",
                   1: "https://www.instagram.com/workbazaar.india",
-                  2: null,
+                  2: "https://www.linkedin.com/in/workbazaar-india-ab9108418?utm_source=share_via&utm_content=profile&utm_medium=member_android",
                   3: "https://www.facebook.com/profile.php?id=61591068779558",
                 };
                 const href = socialLinks[i] || "#";
