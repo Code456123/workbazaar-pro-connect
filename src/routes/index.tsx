@@ -410,7 +410,7 @@ function BecomeWorker() {
               <h2 className="mt-5 font-display text-4xl font-bold leading-tight sm:text-5xl">
                 Grow your business with <span className="text-gradient">WorkBazaar.</span>
               </h2>
-              <p className="mt-4 max-w-lg text-white/70">Join 1000+ verified pros earning up to ₹12,000/month. Free onboarding, weekly payouts, and a steady stream of nearby jobs.</p>
+              <p className="mt-4 max-w-lg text-white/70">Join 1000+ verified pros earning up to ₹12,000/month. Free onboarding, everyday payouts, and a steady stream of nearby jobs.</p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {["Everyday payouts","Free training","Flexible hours","Insurance cover"].map(x=>(
                   <li key={x} className="flex items-center gap-2 text-sm text-white/80"><Check className="size-4 text-ember" /> {x}</li>
