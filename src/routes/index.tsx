@@ -424,7 +424,7 @@ function BecomeWorker() {
                 <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="Full name" />
                 <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="Phone number" />
                 <select className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-white/40">
-                  {["Select your trade","Electrician","Plumber","Carpenter","Painter","AC Technician","Cleaner"].map(o=><option key={o} className="bg-navy text-white">{o}</option>)}
+                  {["Select your trade","Electrician","Plumber","Carpenter","Painter","Waterproofing","AC Technician","Refrigerator Repair","Washing Machine Repair","Microwave Repair","TV Repair","Geyser Repair","Home Deep Cleaning","Kitchen Cleaning","Cleaner","Sofa & Carpet Cleaning","Water Tank Cleaning","House Helper","Cook","Driver","CCTV Installation","RO Service","Pest Control","Tailoring"].map(o=><option key={o} className="bg-navy text-white">{o}</option>)}
                 </select>
                 <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/40" placeholder="City" />
                 <button className="mt-2 w-full rounded-xl px-4 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95" style={{ background: "var(--gradient-brand)" }}>
