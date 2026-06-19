@@ -410,9 +410,9 @@ function BecomeWorker() {
               <h2 className="mt-5 font-display text-4xl font-bold leading-tight sm:text-5xl">
                 Grow your business with <span className="text-gradient">WorkBazaar.</span>
               </h2>
-              <p className="mt-4 max-w-lg text-white/70">Join 50,000+ verified pros earning up to ₹80,000/month. Free onboarding, weekly payouts, and a steady stream of nearby jobs.</p>
+              <p className="mt-4 max-w-lg text-white/70">Join 5000+ verified pros earning up to ₹12000/month. Free onboarding, everyday payouts, and a steady stream of nearby jobs.</p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {["Weekly payouts","Free training","Flexible hours","Insurance cover"].map(x=>(
+                {["Everyday payouts","Free training","Flexible hours","Insurance cover"].map(x=>(
                   <li key={x} className="flex items-center gap-2 text-sm text-white/80"><Check className="size-4 text-ember" /> {x}</li>
                 ))}
               </ul>
@@ -529,7 +529,7 @@ function Testimonials() {
     { n: "Mohammed Irfan", r: "Mumbai · Plumber", q: "I earn 3x more on WorkBazaar than I did with my old contractor.", a: "MI" },
     { n: "Sneha Patel", r: "Bangalore · Customer", q: "Transparent pricing and lovely staff. Easily the best app for home services.", a: "SP" },
     { n: "Rahul Verma", r: "Pune · Customer", q: "The tracking and instant updates feel like ordering food. Brilliant.", a: "RV" },
-    { n: "Kiran Das", r: "Hyderabad · AC Tech", q: "Weekly payouts and steady jobs — exactly what I needed.", a: "KD" },
+    { n: "Kiran Das", r: "Hyderabad · AC Tech", q: "Everyday payouts and steady jobs — exactly what I needed.", a: "KD" },
     { n: "Neha Kapoor", r: "Gurgaon · Customer", q: "I deleted every other handyman app. WorkBazaar just works.", a: "NK" },
   ];
   return (
